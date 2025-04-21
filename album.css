@@ -1,66 +1,101 @@
-body {
+/* Reset and base styles */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top left, #1a1a2e, #16213e);
+  color: #fff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
+  padding: 40px 20px;
 }
 
 .album-container {
+  width: 100%;
   max-width: 1200px;
-  width: 90%;
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-  color: #fff;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #00f2fe;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .photo {
   position: relative;
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.05);
 }
 
 .photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .photo:hover img {
   transform: scale(1.1);
 }
 
-.photo::after {
-  content: "View";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s;
+/* Lightbox styles */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.5s ease;
 }
 
-.photo:hover::after {
-  opacity: 1;
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lightbox .close:hover {
+  color: #00f2fe;
 }
