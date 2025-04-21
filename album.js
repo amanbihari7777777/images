@@ -1,14 +1,7 @@
 const photoGallery = document.getElementById('photoGallery');
 
-// Array of image URLs
-const images = [
-  'https://picsum.photos/seed/photo1/500/300',
-  'https://picsum.photos/seed/photo2/500/300',
-  'https://picsum.photos/seed/photo3/500/300',
-  'https://picsum.photos/seed/photo4/500/300',
-  'https://picsum.photos/seed/photo5/500/300',
-  'https://picsum.photos/seed/photo6/500/300'
-];
+// Array of image file names
+const images = ['1.jpg', '2.jpg', '3.jpg'];
 
 // Dynamically create photo elements
 images.forEach(url => {
@@ -16,6 +9,7 @@ images.forEach(url => {
   div.className = 'photo';
   const img = document.createElement('img');
   img.src = url;
+  img.alt = "Photo Album Image";
   div.appendChild(img);
   photoGallery.appendChild(div);
 });
