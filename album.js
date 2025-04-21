@@ -1,15 +1,31 @@
 const photoGallery = document.getElementById('photoGallery');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.lightbox .close');
 
-// Array of image file names
-const images = ['1.jpg', '2.jpg', '3.jpg'];
+// Image sources from Img/ folder
+const images = ['Img/1.jpg', 'Img/2.jpg', 'Img/3.jpg'];
 
-// Dynamically create photo elements
-images.forEach(url => {
+images.forEach(src => {
   const div = document.createElement('div');
   div.className = 'photo';
   const img = document.createElement('img');
-  img.src = url;
-  img.alt = "Photo Album Image";
+  img.src = src;
+  img.alt = "Photo Album";
   div.appendChild(img);
   photoGallery.appendChild(div);
+
+  // Lightbox trigger
+  div.addEventListener('click', () => {
+    lightboxImg.src = src;
+    lightbox.style.display = 'flex';
+  });
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) lightbox.style.display = 'none';
 });
