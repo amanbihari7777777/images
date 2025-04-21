@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Modern Photo Album</title>
+  <title>Advanced Photo Album</title>
   <link rel="stylesheet" href="album.css" />
 </head>
 <body>
   <div class="album-container">
-    <h1>My Photo Album</h1>
+    <h1>My Stylish Photo Album</h1>
     <div class="gallery" id="photoGallery">
-      <!-- Images will be loaded dynamically -->
+      <!-- Images will be loaded here -->
     </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Full View">
   </div>
 
   <script src="album.js"></script>
